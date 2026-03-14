@@ -38,7 +38,7 @@ export default function Header() {
           {/* Logo + Brand */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src="src\assets\Rustic visual solution logo.svg"
+              src="/images/Rustic visual solution logo.svg"
               alt="Rustic Visual Solution Logo"
               className="h-10 w-auto"
             />

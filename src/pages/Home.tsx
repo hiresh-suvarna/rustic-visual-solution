@@ -10,26 +10,26 @@ export default function Home() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
 
   const heroImages = [
-    "src/assets/DJI_0095.jpg",
-    "src/assets/DJI_0206.JPG",
-    "src/assets/DJI_0723.JPG",
+    "/images/DJI_0095.jpg",
+    "/images/DJI_0206.JPG",
+    "/images/DJI_0723.JPG",
   ];
 
   const services = [
     {
-      icon: "src/assets/icon-360-tours.dim_128x128.png",
+      icon: "/images/icon-360-tours.dim_128x128.png",
       title: "360 Virtual Tours",
       description:
         "Immersive walkthroughs that bring spaces to life, allowing viewers to explore every detail from anywhere.",
     },
     {
-      icon: "src/assets/icon-drone.dim_128x128.png",
+      icon: "/images/icon-drone.dim_128x128.png",
       title: "Drone Cinematics",
       description:
         "Breathtaking aerial perspectives that showcase properties and spaces with cinematic excellence.",
     },
     {
-      icon: "src/assets/icon-immersive.dim_128x128.png",
+      icon: "/images/icon-immersive.dim_128x128.png",
       title: "Immersive Showcases",
       description:
         "Premium visual experiences that captivate audiences and elevate brand presence.",

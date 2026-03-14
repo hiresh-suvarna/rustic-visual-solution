@@ -51,7 +51,7 @@ export default function About() {
           {/* Image placeholder */}
           <div className="rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="src/assets/about-img.jpg"
+              src="/images/about-img.jpg"
               alt="Visual Experience"
               className="w-full h-full object-cover hover:scale-105 transition duration-700"
             />

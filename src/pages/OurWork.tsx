@@ -4,37 +4,37 @@ import React from "react";
 export default function OurWork() {
   const projects = [
     {
-      image: 'src/assets/DJI_0095.JPG',
+      image: '/images/DJI_0095.jpg',
       title: 'Modern Luxury Villa',
       category: 'Luxury Residence',
       embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     },
     {
-      image: 'src/assets/DJI_0206.JPG',
+      image: '/images/DJI_0206.JPG',
       title: 'Fine Dining Experience',
       category: 'Premium Hospitality',
       embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     },
     {
-      image: 'src/assets/DJI_0723.JPG',
+      image: '/images/DJI_0723.JPG',
       title: 'Corporate Headquarters',
       category: 'Commercial Space',
       embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     },
     {
-      image: 'src/assets/port1.JPG',
+      image: '/images/port1.JPG',
       title: 'University Campus',
       category: 'Educational Institution',
       embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     },
     {
-      image: 'src/assets/port2.JPG',
+      image: '/images/port2.JPG',
       title: 'Contemporary Art Museum',
       category: 'Cultural Space',
       embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     },
     {
-      image: 'src/assets/port2.JPG',
+      image: '/images/port2.JPG',
       title: 'Contemporary Art Museum',
       category: 'Cultural Space',
       embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
