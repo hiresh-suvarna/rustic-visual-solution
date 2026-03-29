@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Header() {
   const navigate = useNavigate();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -14,13 +15,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/our-work", label: "Our Work" },
+    { to: "/packages", label: "Packages" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Contact" },
+  ];
+
   return (
     <>
       {/* HEADER */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-md"
+            ? "bg-white/60 backdrop-blur-xl border-b border-white/20 shadow-md"
             : "bg-transparent"
         }`}
       >
@@ -61,7 +70,6 @@ export default function Header() {
                   <ChevronDown size={16} />
                 </button>
 
-                {/* DROPDOWN PANEL */}
                 <div
                   className={`
                   absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[320px]
@@ -76,41 +84,26 @@ export default function Header() {
                   <div
                     className="
                     rounded-2xl p-6
-                    bg-white/40 backdrop-blur-xl
+                    bg-white/40 backdrop-blur-2xl
                     border border-white/20
                     shadow-2xl
                     "
                   >
                     <div className="space-y-4">
 
-                      <Link
-                        to="/packages"
-                        className="block p-3 rounded-xl hover:bg-white/40 transition"
-                      >
+                      <Link to="/packages" className="block p-3 rounded-xl hover:bg-white/40 transition">
                         <p className="font-medium">Packages</p>
-                        <p className="text-sm text-gray-500">
-                          Explore pricing and plans
-                        </p>
+                        <p className="text-sm text-gray-500">Explore pricing and plans</p>
                       </Link>
 
-                      <Link
-                        to="/about"
-                        className="block p-3 rounded-xl hover:bg-white/40 transition"
-                      >
+                      <Link to="/about" className="block p-3 rounded-xl hover:bg-white/40 transition">
                         <p className="font-medium">About Us</p>
-                        <p className="text-sm text-gray-500">
-                          Learn about our story
-                        </p>
+                        <p className="text-sm text-gray-500">Learn about our story</p>
                       </Link>
 
-                      <Link
-                        to="/contact"
-                        className="block p-3 rounded-xl hover:bg-white/40 transition"
-                      >
+                      <Link to="/contact" className="block p-3 rounded-xl hover:bg-white/40 transition">
                         <p className="font-medium">Contact</p>
-                        <p className="text-sm text-gray-500">
-                          Get in touch with us
-                        </p>
+                        <p className="text-sm text-gray-500">Get in touch</p>
                       </Link>
 
                     </div>
@@ -138,59 +131,73 @@ export default function Header() {
               </button>
             </div>
 
-            {/* MOBILE MENU BUTTON */}
+            {/* MOBILE BUTTON */}
             <button
               className="lg:hidden p-2"
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <Menu size={24} />
             </button>
+
           </div>
         </div>
       </header>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE MENU (GLASS) */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50">
 
-          <div className="absolute right-0 top-0 h-full w-[80%] max-w-sm bg-white p-6 shadow-xl">
+          {/* BACKDROP */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
 
-            <div className="flex justify-end mb-6">
+          {/* PANEL */}
+          <div
+            className="
+            absolute right-0 top-0 h-full w-[85%] max-w-sm
+            bg-white/30 backdrop-blur-2xl
+            border-l border-white/20
+            shadow-2xl
+            p-6
+            "
+          >
+
+            {/* HEADER */}
+            <div className="flex justify-between items-center mb-8">
+              <span className="text-lg font-semibold">Menu</span>
               <button onClick={() => setIsMobileMenuOpen(false)}>
                 <X size={26} />
               </button>
             </div>
 
-            <nav className="flex flex-col gap-6 text-lg font-medium">
-
-              <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
-                Home
-              </Link>
-
-              <Link to="/our-work" onClick={() => setIsMobileMenuOpen(false)}>
-                Our Work
-              </Link>
-
-              <Link to="/packages" onClick={() => setIsMobileMenuOpen(false)}>
-                Packages
-              </Link>
-
-              <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>
-                About
-              </Link>
-
-              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                Contact
-              </Link>
-
+            {/* LINKS */}
+            <nav className="flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-lg font-medium text-black/80 hover:text-black transition"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
 
+            {/* CTA */}
             <button
               onClick={() => {
                 navigate({ to: "/contact" });
                 setIsMobileMenuOpen(false);
               }}
-              className="mt-10 w-full py-3 rounded-full bg-black text-white hover:bg-neutral-800 transition"
+              className="
+              mt-10 w-full py-3 rounded-full
+              bg-black text-white hover:bg-neutral-800
+              transition-all duration-300
+              hover:scale-[1.02] shadow-lg
+              "
             >
               Get a Quote
             </button>
