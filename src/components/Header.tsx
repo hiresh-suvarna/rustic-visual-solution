@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Header() {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/our-work", label: "Our Work" },
-    { to: "/packages", label: "Packages" },
-    { to: "/about", label: "About" },
-    { to: "/contact", label: "Contact" },
-  ];
 
   return (
     <>
@@ -46,26 +39,100 @@ export default function Header() {
               </span>
             </Link>
 
-            {/* DESKTOP NAV (VISIBLE ≥ 1024px) */}
+            {/* DESKTOP NAV */}
             <nav className="hidden lg:flex items-center gap-10">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="text-sm font-medium text-black hover:text-gray-600 transition"
+
+              <Link to="/" className="text-sm font-medium hover:text-gray-600 transition">
+                Home
+              </Link>
+
+              <Link to="/our-work" className="text-sm font-medium hover:text-gray-600 transition">
+                Our Work
+              </Link>
+
+              {/* DROPDOWN */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsDropdownOpen(true)}
+                onMouseLeave={() => setIsDropdownOpen(false)}
+              >
+                <button className="flex items-center gap-1 text-sm font-medium hover:text-gray-600 transition">
+                  Services
+                  <ChevronDown size={16} />
+                </button>
+
+                {/* DROPDOWN PANEL */}
+                <div
+                  className={`
+                  absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[320px]
+                  transition-all duration-300
+                  ${
+                    isDropdownOpen
+                      ? "opacity-100 translate-y-0 visible"
+                      : "opacity-0 -translate-y-2 invisible"
+                  }
+                  `}
                 >
-                  {link.label}
-                </Link>
-              ))}
+                  <div
+                    className="
+                    rounded-2xl p-6
+                    bg-white/40 backdrop-blur-xl
+                    border border-white/20
+                    shadow-2xl
+                    "
+                  >
+                    <div className="space-y-4">
+
+                      <Link
+                        to="/packages"
+                        className="block p-3 rounded-xl hover:bg-white/40 transition"
+                      >
+                        <p className="font-medium">Packages</p>
+                        <p className="text-sm text-gray-500">
+                          Explore pricing and plans
+                        </p>
+                      </Link>
+
+                      <Link
+                        to="/about"
+                        className="block p-3 rounded-xl hover:bg-white/40 transition"
+                      >
+                        <p className="font-medium">About Us</p>
+                        <p className="text-sm text-gray-500">
+                          Learn about our story
+                        </p>
+                      </Link>
+
+                      <Link
+                        to="/contact"
+                        className="block p-3 rounded-xl hover:bg-white/40 transition"
+                      >
+                        <p className="font-medium">Contact</p>
+                        <p className="text-sm text-gray-500">
+                          Get in touch with us
+                        </p>
+                      </Link>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Link to="/contact" className="text-sm font-medium hover:text-gray-600 transition">
+                Contact
+              </Link>
+
             </nav>
 
-            {/* CTA BUTTON (DESKTOP) */}
+            {/* CTA BUTTON */}
             <div className="hidden lg:block">
               <button
                 onClick={() => navigate({ to: "/contact" })}
-                className="px-5 py-2 rounded-full text-sm font-medium
+                className="
+                px-5 py-2 rounded-full text-sm font-medium
                 bg-black text-white hover:bg-neutral-800
-                transition hover:scale-105 hover:shadow-md"
+                transition hover:scale-105 hover:shadow-md
+                "
               >
                 Get a Quote
               </button>
@@ -75,7 +142,6 @@ export default function Header() {
             <button
               className="lg:hidden p-2"
               onClick={() => setIsMobileMenuOpen(true)}
-              aria-label="Open Menu"
             >
               <Menu size={24} />
             </button>
@@ -83,35 +149,42 @@ export default function Header() {
         </div>
       </header>
 
-      {/* MOBILE MENU OVERLAY */}
+      {/* MOBILE MENU */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm">
 
-          {/* SIDE PANEL */}
           <div className="absolute right-0 top-0 h-full w-[80%] max-w-sm bg-white p-6 shadow-xl">
 
-            {/* CLOSE BUTTON */}
             <div className="flex justify-end mb-6">
               <button onClick={() => setIsMobileMenuOpen(false)}>
                 <X size={26} />
               </button>
             </div>
 
-            {/* NAV LINKS */}
             <nav className="flex flex-col gap-6 text-lg font-medium">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="hover:text-gray-500 transition"
-                >
-                  {link.label}
-                </Link>
-              ))}
+
+              <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+                Home
+              </Link>
+
+              <Link to="/our-work" onClick={() => setIsMobileMenuOpen(false)}>
+                Our Work
+              </Link>
+
+              <Link to="/packages" onClick={() => setIsMobileMenuOpen(false)}>
+                Packages
+              </Link>
+
+              <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>
+                About
+              </Link>
+
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                Contact
+              </Link>
+
             </nav>
 
-            {/* CTA */}
             <button
               onClick={() => {
                 navigate({ to: "/contact" });
