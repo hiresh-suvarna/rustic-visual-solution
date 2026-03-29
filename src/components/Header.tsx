@@ -8,10 +8,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -25,93 +22,109 @@ export default function Header() {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/30 backdrop-blur-lg border-b border-white/20 shadow-md"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-8 lg:px-16">
-        <div className="relative flex items-center justify-between h-20 lg:h-24">
+    <>
+      {/* HEADER */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-md"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="flex items-center justify-between h-16 sm:h-20">
 
-          {/* Logo + Brand */}
-          <Link to="/" className="flex items-center gap-3">
-            <img
-              src="/images/logoNew.PNG"
-              alt="Rustic Visual Solution Logo"
-              className="h-10 w-auto"
-            />
-            <span className="text-xl lg:text-2xl font-semibold tracking-tight">
-              Rustic Visual Solution
-            </span>
-          </Link>
+            {/* LOGO */}
+            <Link to="/" className="flex items-center gap-2 sm:gap-3">
+              <img
+                src="/images/logoNew.PNG"
+                alt="Logo"
+                className="h-8 sm:h-10 w-auto"
+              />
+              <span className="text-base sm:text-lg lg:text-xl font-semibold whitespace-nowrap">
+                Rustic Visual
+              </span>
+            </Link>
 
-          {/* Desktop Navigation (Perfect Center) */}
-          <nav className="hidden lg:flex items-center gap-12 absolute left-1/2 -translate-x-1/2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="text-sm font-medium text-black hover:text-gray-600 transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop Button */}
-          <div className="hidden lg:block">
-            <button
-              onClick={() => navigate({ to: "/contact" })}
-              className="px-6 py-2.5 rounded-full text-sm font-medium
-              bg-black text-white hover:bg-neutral-800
-              transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            >
-              Get a Quote
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <nav className="lg:hidden py-6 border-t border-gray-200">
-            <div className="flex flex-col gap-4">
+            {/* DESKTOP NAV (VISIBLE ≥ 1024px) */}
+            <nav className="hidden lg:flex items-center gap-10">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-base font-medium text-gray-600 hover:text-black transition-colors py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-sm font-medium text-black hover:text-gray-600 transition"
                 >
                   {link.label}
                 </Link>
               ))}
+            </nav>
 
+            {/* CTA BUTTON (DESKTOP) */}
+            <div className="hidden lg:block">
               <button
-                onClick={() => {
-                  navigate({ to: "/contact" });
-                  setIsMobileMenuOpen(false);
-                }}
-                className="px-6 py-2.5 rounded-full text-sm font-medium
+                onClick={() => navigate({ to: "/contact" })}
+                className="px-5 py-2 rounded-full text-sm font-medium
                 bg-black text-white hover:bg-neutral-800
-                transition-all duration-300 mt-4"
+                transition hover:scale-105 hover:shadow-md"
               >
                 Get a Quote
               </button>
             </div>
-          </nav>
-        )}
-      </div>
-    </header>
+
+            {/* MOBILE MENU BUTTON */}
+            <button
+              className="lg:hidden p-2"
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Open Menu"
+            >
+              <Menu size={24} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* MOBILE MENU OVERLAY */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm">
+
+          {/* SIDE PANEL */}
+          <div className="absolute right-0 top-0 h-full w-[80%] max-w-sm bg-white p-6 shadow-xl">
+
+            {/* CLOSE BUTTON */}
+            <div className="flex justify-end mb-6">
+              <button onClick={() => setIsMobileMenuOpen(false)}>
+                <X size={26} />
+              </button>
+            </div>
+
+            {/* NAV LINKS */}
+            <nav className="flex flex-col gap-6 text-lg font-medium">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="hover:text-gray-500 transition"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* CTA */}
+            <button
+              onClick={() => {
+                navigate({ to: "/contact" });
+                setIsMobileMenuOpen(false);
+              }}
+              className="mt-10 w-full py-3 rounded-full bg-black text-white hover:bg-neutral-800 transition"
+            >
+              Get a Quote
+            </button>
+
+          </div>
+        </div>
+      )}
+    </>
   );
 }
