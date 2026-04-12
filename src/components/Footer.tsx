@@ -90,9 +90,9 @@ export default function Footer() {
               <ul className="space-y-3 text-sm text-white/80">
                 <li>360° Virtual Tours</li>
                 <li>Drone Cinematography</li>
-                <li>Immersive Showcases</li>
-                <li>Luxury Property Visuals</li>
-                <li>Commercial Space Tours</li>
+                <li>Immersive Visualization</li>
+                <li>Cinematic Interior Photography</li>
+                <li>Construction Updates</li>
               </ul>
             </div>
 
@@ -111,12 +111,12 @@ export default function Footer() {
 
                 <li className="flex items-center gap-3">
                   <Phone size={16} />
-                  +91 90000 00000
+                  +91 91379 98059
                 </li>
 
                 <li className="flex items-center gap-3">
                   <Mail size={16} />
-                  hello@rusticvisual.com
+                  hireshrustic.vp@gmail.com
                 </li>
 
               </ul>

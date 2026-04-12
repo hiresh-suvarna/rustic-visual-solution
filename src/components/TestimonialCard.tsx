@@ -1,5 +1,5 @@
 import React from "react";
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 interface TestimonialCardProps {
   quote: string;
@@ -15,54 +15,52 @@ export default function TestimonialCard({
   return (
     <div
       className="
-      group relative p-8 lg:p-10 rounded-3xl
-      bg-white border border-gray-200
-      hover:-translate-y-2 hover:shadow-2xl
-      transition-all duration-500
+      relative p-8
+      bg-warmWhite border border-lightGrey
+      transition-all duration-300
+      hover:shadow-lg
       "
     >
-      {/* Quote Icon */}
-      <Quote
-        size={32}
-        className="absolute top-6 right-6 text-gray-200 group-hover:text-gray-300 transition"
-      />
+      {/* Left Gold Border */}
+      <div className="absolute left-0 top-0 h-full w-[3px] bg-gold " />
 
       {/* Stars */}
-      <div className="flex mb-4 text-yellow-500">
+      <div className="flex gap-1 text-gold mb-4">
         {[...Array(5)].map((_, i) => (
-          <Star key={i} size={18} fill="currentColor" stroke="none" />
+          <Star key={i} size={16} fill="currentColor" stroke="none" />
         ))}
       </div>
 
       {/* Quote */}
-      <p className="text-lg lg:text-xl leading-relaxed mb-8 italic text-gray-600">
+      <p className="text-base leading-relaxed text-grey mb-6">
         "{quote}"
       </p>
 
-      {/* Client */}
+      {/* Client Info */}
       <div className="flex items-center gap-4">
-
         {/* Avatar */}
         <div
           className="
-          w-10 h-10 rounded-full bg-gray-200
+          w-12 h-12 rounded-full bg-gold text-white
           flex items-center justify-center
           font-semibold text-sm
           "
         >
-          {clientName.charAt(0)}
+          {clientName
+            .split(" ")
+            .map((n) => n[0])
+            .join("")}
         </div>
 
+        {/* Name + Type */}
         <div>
-          <p className="font-semibold text-gray-900">
+          <p className="font-semibold text-richBlack">
             {clientName}
           </p>
-
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-grey">
             {projectType}
           </p>
         </div>
-
       </div>
     </div>
   );

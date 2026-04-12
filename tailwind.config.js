@@ -3,10 +3,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        gold: "#c8a45a",
+        gold: "#eab570",
         richBlack: "#1a1a1a",
         white: "#ffffff",
-        warmWhite: "#f4f5ef",
+        warmWhite: "#FFF7F3",
         grey: "#555555",
         lightGrey: "#e8e8e8",
         footer: "#1a1a1a",

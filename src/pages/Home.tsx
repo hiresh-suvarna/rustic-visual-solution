@@ -17,7 +17,7 @@ export default function Home() {
 
   const services = [
     {
-      icon: "/images/icon-360-tours.dim_128x128.png",
+      icon: "/images/360 View.png",
       title: "360 Virtual Tours",
       description:
         "Immersive walkthroughs that bring spaces to life, allowing viewers to explore every detail from anywhere.",
@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       {/* 360 TOUR SECTION */}
-      <section className="py-16 lg:py-24 px-6 lg:px-12 bg-gradient-to-b from-muted/40 to-background">
+      <section className="py-16 lg:py-24 px-6 lg:px-12 bg-warmWhite">
         <div className="container mx-auto max-w-7xl">
           <h2
             ref={headingRef}
@@ -115,9 +115,9 @@ export default function Home() {
             Explore Our 360° Virtual Tours
           </h2>
 
-          <p className="text-center text-lg text-muted-foreground mb-10 lg:mb-14 max-w-2xl mx-auto">
+          <p className="text-center text-lg text-muted-foreground mb-10 lg:mb-14 max-w-2xl mx-auto text-black">
             Step inside and experience our immersive virtual tours. Click and
-            drag to navigate, use thumbnails to switch between spaces.
+            drag to navigate.
           </p>
 
           <div className="w-full rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card">
@@ -173,7 +173,7 @@ export default function Home() {
 
             {[
               "Luxury Homes",
-              "Restaurants",
+              "Hospilality Industries",
               "Commercial Spaces",
               "Colleges & Museums",
             ].map((client, index) => (
@@ -221,8 +221,7 @@ export default function Home() {
           </h2>
 
           <p className="text-lg lg:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Transform your space into an immersive visual experience with cinematic
-            tours, drone visuals, and interactive walkthroughs.
+            Transform your space into an immersive visual experience that helps you close your sales faster with our interactive walkthrough and cinematic visuals.
           </p>
 
           <button
