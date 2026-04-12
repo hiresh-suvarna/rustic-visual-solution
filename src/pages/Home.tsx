@@ -89,11 +89,11 @@ export default function Home() {
         {/* Hero Content */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white px-6 max-w-5xl">
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight font-bricolage">
               Immersive Visual Experiences for Premium Spaces
             </h1>
 
-            <p className="text-lg md:text-xl lg:text-2xl mb-10 text-white/90 font-light tracking-wide">
+            <p className="text-lg md:text-xl lg:text-2xl mb-10 text-white/90 font-light tracking-wide ">
               360° Tours • Drone Visuals • Cinematic Walkthroughs
             </p>
           </div>
