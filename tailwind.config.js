@@ -14,6 +14,8 @@ export default {
         bricolage: ['"Bricolage Grotesque"', "sans-serif"],
         ubuntu: ['"Ubuntu"', "sans-serif"],
         playfair: ['"Playfair"', "serif"],
+        inter: ['"Inter"', "sans-serif"],
+        poppins: ['"Poppins"', "sans-serif"],
       },
     },
   },

@@ -160,7 +160,7 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl text-center">
 
           {/* Heading */}
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-gold">
+          <h2 className="text-3xl lg:text-5xl font-semibold mb-6 text-gold">
             Who We Work With
           </h2>
 
