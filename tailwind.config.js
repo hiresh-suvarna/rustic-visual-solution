@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         bricolage: ['"Bricolage Grotesque"', "sans-serif"],
         ubuntu: ['"Ubuntu"', "sans-serif"],
+        playfair: ['"Playfair"', "serif"],
       },
     },
   },

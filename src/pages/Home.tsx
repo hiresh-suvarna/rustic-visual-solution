@@ -93,6 +93,7 @@ export default function Home() {
               Immersive Visual Experiences for Premium Spaces
             </h1>
 
+
             <p className="text-lg md:text-xl lg:text-2xl mb-10 text-white/90 font-light tracking-wide ">
               360° Tours • Drone Visuals • Cinematic Walkthroughs
             </p>
@@ -155,11 +156,11 @@ export default function Home() {
       </section>
 
       {/* CLIENTS */}
-      <section className="py-24 lg:py-32 px-6 lg:px-12 bg-gray-50">
+      <section className="py-18 lg:py-25 px-6 lg:px-12 bg-warmWhite">
         <div className="container mx-auto max-w-7xl text-center">
 
           {/* Heading */}
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-gold">
             Who We Work With
           </h2>
 
@@ -168,7 +169,7 @@ export default function Home() {
           </p>
 
           {/* Client Types */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 max-w-5xl mx-auto ">
 
             {[
               "Luxury Homes",
@@ -178,15 +179,15 @@ export default function Home() {
             ].map((client, index) => (
               <div
                 key={index}
-                className="group p-8 rounded-2xl bg-white border border-gray-200
+                className=" group p-8 rounded-2xl bg-white border border-gray-200
                 flex items-center justify-center
                 transition-all duration-300
                 hover:shadow-xl hover:-translate-y-1"
               >
-                <p className="text-base lg:text-lg font-semibold text-gray-800
+                <h3 className="text-base lg:text-lg font-semibold text-gray-800
                 group-hover:text-black transition">
                   {client}
-                </p>
+                </h3>
               </div>
             ))}
 
