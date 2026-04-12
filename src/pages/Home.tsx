@@ -80,7 +80,7 @@ export default function Home() {
     <div className="pt-20 lg:pt-24">
 
       {/* HERO SECTION */}
-      <section className="relative h-[85vh] lg:h-[90vh] w-full overflow-hidden">
+      <section className="relative h-[85vh] lg:h-[100vh] w-full overflow-hidden">
         <HeroCarousel images={heroImages} />
 
         {/* Cinematic Overlay */}
@@ -90,7 +90,7 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white px-6 max-w-5xl">
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight font-bricolage">
-              Immersive Visual Experiences for Premium Spaces
+              Immersive <br /> Visual Experiences<br /> for Premium Spaces
             </h1>
 
 
@@ -122,7 +122,7 @@ export default function Home() {
 
           <div className="w-full rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card">
             <iframe
-              src="https://howlsuvarna.viewin360.co/share/collection/7Hxlf?logo=1&info=0&logosize=73&fs=1&vr=1&zoom=1&sd=1&autorotate=0.08&autop=20&thumbs=3&margin=10"
+              src="https://howlsuvarna.viewin360.co/share/collection/7MYMn?logo=1&info=0&logosize=73&fs=1&vr=1&zoom=1&sd=1&autorotate=-0.15&autop=15&autopalt=1&thumbs=3&margin=10"
               width="100%"
               height="640"
               frameBorder="0"

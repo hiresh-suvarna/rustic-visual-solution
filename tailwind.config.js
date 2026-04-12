@@ -9,6 +9,7 @@ export default {
         warmWhite: "#f4f5ef",
         grey: "#555555",
         lightGrey: "#e8e8e8",
+        footer: "#1a1a1a",
       },
       fontFamily: {
         bricolage: ['"Bricolage Grotesque"', "sans-serif"],

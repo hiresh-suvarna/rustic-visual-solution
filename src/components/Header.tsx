@@ -32,7 +32,7 @@ export default function Header() {
             : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-6 lg:px-16">
+        <div className="container mx-auto px-6 lg:px-16 lg:py-2">
 
           <div className="flex items-center justify-between h-16 lg:h-20">
 
@@ -43,9 +43,9 @@ export default function Header() {
                 alt="Logo"
                 className="h-8 lg:h-10"
               />
-              <span className="text-lg lg:text-xl font-medium tracking-tight">
-                Rustic Visual
-              </span>
+              <p className="text-lg lg:text-2xl font-medium tracking-tight">
+                Rustic Visual Solution
+              </p>
             </Link>
 
             {/* DESKTOP NAV */}
@@ -54,7 +54,7 @@ export default function Header() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-sm font-medium text-black/80 hover:text-black transition"
+                  className="text-md font-medium text-black/80 hover:text-black transition font-inter"
                 >
                   {link.label}
                 </Link>
@@ -65,7 +65,7 @@ export default function Header() {
             <div className="hidden lg:block">
               <button
                 onClick={() => navigate({ to: "/contact" })}
-                className="bg-gold
+                className="bg-gold font-inter
                 px-8 py-3 rounded-full text-md font-medium
                 text-black
                 hover:bg-black hover:text-white
