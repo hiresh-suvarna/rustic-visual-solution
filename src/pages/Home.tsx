@@ -17,19 +17,19 @@ export default function Home() {
 
   const services = [
     {
-      icon: "/images/360 View.png",
+      icon: "/images/ICON_1.png",
       title: "360 Virtual Tours",
       description:
         "Immersive walkthroughs that bring spaces to life, allowing viewers to explore every detail from anywhere.",
     },
     {
-      icon: "/images/icon-drone.dim_128x128.png",
+      icon: "/images/ICON_2.png",
       title: "Drone Cinematics",
       description:
         "Breathtaking aerial perspectives that showcase properties and spaces with cinematic excellence.",
     },
     {
-      icon: "/images/icon-immersive.dim_128x128.png",
+      icon: "/images/ICON_3.png",
       title: "Immersive Showcases",
       description:
         "Premium visual experiences that captivate audiences and elevate brand presence.",
@@ -77,7 +77,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="pt-20 lg:pt-24">
+    <div>
 
       {/* HERO SECTION */}
       <section className="relative h-[85vh] lg:h-[100vh] w-full overflow-hidden">
@@ -221,7 +221,7 @@ export default function Home() {
           </h2>
 
           <p className="text-lg lg:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Transform your space into an immersive visual experience that helps you close your sales faster with our interactive walkthrough and cinematic visuals.
+            Transform your space into an immersive visual experience that helps you close your sales faster with our interactive and cinematic visuals.
           </p>
 
           <button

@@ -28,8 +28,8 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-white/80 backdrop-blur-xl shadow-sm"
-            : "bg-transparent"
+            ? "bg-white/70 backdrop-blur-xl shadow-md"
+            : "bg-black/30 backdrop-blur-lg text-gold"
         }`}
       >
         <div className="container mx-auto px-6 lg:px-16 lg:py-2">
@@ -54,7 +54,11 @@ export default function Header() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-md font-medium text-black/80 hover:text-black transition font-inter"
+                  className={`text-md font-medium transition font-inter ${
+                    isScrolled
+                      ? "text-black hover:text-gold"
+                      : "text-warmWhite hover:text-white"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -66,10 +70,10 @@ export default function Header() {
               <button
                 onClick={() => navigate({ to: "/contact" })}
                 className="bg-gold font-inter
-                px-8 py-3 rounded-full text-md font-medium
+                px-8 py-3 rounded-full text-md font-semibold
                 text-black
                 hover:bg-black hover:text-white
-                transition-all duration-300
+                transition-all duration-400
                 "
               >
                 Get a Quote

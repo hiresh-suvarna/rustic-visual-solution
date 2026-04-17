@@ -17,7 +17,7 @@ export default function ServiceCard({ icon, title, description }: ServiceCardPro
         <img
           src={icon}
           alt={title}
-          className="w-16 h-16 lg:w-26 lg:h-16 opacity-80 
+          className="w-16 h-16 lg:w-25 lg:h-25 opacity-80 
           transition-all duration-300 
           group-hover:opacity-100 group-hover:scale-110"
         />
