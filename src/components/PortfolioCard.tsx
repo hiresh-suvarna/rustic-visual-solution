@@ -19,130 +19,336 @@ export default function PortfolioCard({
 
   return (
     <>
-      {/* CARD */}
-      <div
-        onClick={() => embedUrl && setIsOpen(true)}
+      {/* ================= CARD ================= */}
+
+<div
+  onClick={() => embedUrl && setIsOpen(true)}
+  className="
+    group
+    relative
+    cursor-pointer
+    overflow-hidden
+    rounded-[32px]
+    bg-white
+    shadow-sm
+    transition-all
+    duration-500
+    hover:-translate-y-3
+    hover:shadow-2xl
+  "
+>
+
+  {/* Image */}
+
+  <div className="relative aspect-[5/4] overflow-hidden">
+
+    <img
+      src={image}
+      alt={title}
+      className="
+        h-full
+        w-full
+        object-cover
+        transition-transform
+        duration-[900ms]
+        ease-out
+        group-hover:scale-110
+      "
+    />
+
+    {/* Gradient */}
+
+    <div
+      className="
+        absolute
+        inset-0
+        bg-gradient-to-t
+        from-black/70
+        via-black/10
+        to-transparent
+        opacity-70
+        transition
+        duration-500
+      "
+    />
+
+    {/* Category */}
+
+    <div className="absolute left-6 top-6">
+
+      <span
         className="
-        group cursor-pointer rounded-2xl overflow-hidden
-        bg-white border border-gray-200
-        transition-all duration-500 ease-out
-        hover:-translate-y-2 hover:shadow-2xl
+          rounded-full
+          bg-white/90
+          backdrop-blur-md
+          px-4
+          py-2
+          text-xs
+          font-semibold
+          uppercase
+          tracking-[0.2em]
+          text-black
         "
       >
-        {/* IMAGE */}
-        <div className="relative aspect-[4/3] overflow-hidden">
+        {category}
+      </span>
 
-          <img
-            src={image}
-            alt={title}
-            className="
-            w-full h-full object-cover
-            transition-transform duration-700 ease-out
-            group-hover:scale-110
-            "
-          />
+    </div>
 
-          {/* Dark overlay */}
-          <div
-            className="
-            absolute inset-0 bg-black/20
-            opacity-0 group-hover:opacity-100
-            transition duration-500
-            "
-          />
+    {/* Play */}
 
-          {/* Play Button */}
-          {embedUrl && (
-            <div
-              className="
-              absolute inset-0 flex items-center justify-center
-              opacity-0 group-hover:opacity-100
-              transition duration-500
-              "
-            >
-              <div
-                className="
-                flex items-center justify-center
-                w-14 h-14 rounded-full
-                bg-white/90 backdrop-blur
-                shadow-lg
-                transition-transform duration-300
-                group-hover:scale-110
-                "
-              >
-                <Play size={22} className="text-black ml-1" />
-              </div>
-            </div>
-          )}
-        </div>
+    {embedUrl && (
 
-        {/* TEXT CONTENT */}
-        <div className="p-6 space-y-3">
+      <div
+        className="
+          absolute
+          inset-0
+          flex
+          items-center
+          justify-center
+          opacity-0
+          transition-all
+          duration-500
+          group-hover:opacity-100
+        "
+      >
 
-          <span
-            className="
-            inline-block px-3 py-1 text-xs font-medium
-            bg-gray-100 text-gray-700
+        <div
+          className="
+            flex
+            h-20
+            w-20
+            items-center
+            justify-center
             rounded-full
-            "
-          >
-            {category}
-          </span>
+            border
+            border-white/30
+            bg-white/15
+            backdrop-blur-xl
+            transition-all
+            duration-500
+            group-hover:scale-110
+          "
+        >
 
-          <h3
-            className="
-            text-xl font-semibold
-            tracking-tight
-            group-hover:text-black
-            transition-colors
-            "
-          >
-            {title}
-          </h3>
+          <Play
+            size={30}
+            className="ml-1 text-white"
+          />
 
         </div>
+
       </div>
 
-      {/* VIDEO MODAL */}
+    )}
+
+    {/* Bottom Content */}
+
+    <div
+      className="
+        absolute
+        bottom-0
+        left-0
+        right-0
+        p-8
+      "
+    >
+
+      <h3
+        className="
+          font-bricolage
+          text-3xl
+          font-semibold
+          leading-tight
+          text-white
+        "
+      >
+
+        {title}
+
+      </h3>
+
+      <div
+        className="
+          mt-6
+          flex
+          items-center
+          justify-between
+        "
+      >
+
+        <span
+          className="
+            text-sm
+            uppercase
+            tracking-[0.25em]
+            text-white/80
+          "
+        >
+          View Project
+        </span>
+
+        <div
+          className="
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            bg-white
+            text-black
+            transition-all
+            duration-500
+            group-hover:translate-x-1
+          "
+        >
+
+          →
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>      {/* ================= VIDEO MODAL ================= */}
+
       {embedUrl && isOpen && (
         <div
           className="
-          fixed inset-0 z-50 flex items-center justify-center
-          bg-black/80 backdrop-blur-sm p-6
+            fixed
+            inset-0
+            z-50
+            flex
+            items-center
+            justify-center
+            bg-black/80
+            backdrop-blur-md
+            p-6
           "
           onClick={() => setIsOpen(false)}
         >
+
           <div
-            className="
-            relative bg-white rounded-2xl
-            max-w-5xl w-full p-6
-            shadow-2xl
-            "
             onClick={(e) => e.stopPropagation()}
+            className="
+              relative
+              w-full
+              max-w-6xl
+              overflow-hidden
+              rounded-[34px]
+              bg-white
+              shadow-[0_30px_80px_rgba(0,0,0,0.35)]
+              animate-in
+              fade-in
+              zoom-in-95
+              duration-300
+            "
           >
-            {/* Close */}
-            <button
-              className="
-              absolute top-4 right-4
-              text-gray-500 hover:text-black
-              text-xl transition
-              "
-              onClick={() => setIsOpen(false)}
-            >
-              ✕
-            </button>
 
-            <h2 className="text-2xl font-semibold mb-4">{title}</h2>
+            {/* Gold Accent */}
 
-            <div className="aspect-video w-full rounded-xl overflow-hidden">
-              <iframe
-                src={embedUrl}
-                className="w-full h-full"
-                allowFullScreen
-                title={title}
-              />
+            <div className="absolute left-0 top-0 h-1 w-full bg-gold" />
+
+            {/* Header */}
+
+            <div className="flex items-center justify-between border-b border-neutral-200 px-8 py-6">
+
+              <div>
+
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.35em] text-gold">
+                  PROJECT SHOWCASE
+                </p>
+
+                <h2 className="font-bricolage text-3xl font-semibold">
+                  {title}
+                </h2>
+
+              </div>
+
+              <button
+                onClick={() => setIsOpen(false)}
+                className="
+                  flex
+                  h-12
+                  w-12
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-neutral-200
+                  bg-white
+                  text-neutral-500
+                  transition-all
+                  duration-300
+                  hover:bg-black
+                  hover:text-white
+                  hover:rotate-90
+                "
+              >
+                ✕
+              </button>
+
             </div>
+
+            {/* Video */}
+
+            <div className="bg-black p-6">
+
+              <div className="overflow-hidden rounded-2xl aspect-video">
+
+                <iframe
+                  src={embedUrl}
+                  title={title}
+                  allowFullScreen
+                  className="h-full w-full"
+                />
+
+              </div>
+
+            </div>
+
+            {/* Footer */}
+
+            <div className="flex items-center justify-between px-8 py-6">
+
+              <div>
+
+                <p className="text-sm uppercase tracking-[0.25em] text-muted-foreground">
+                  Category
+                </p>
+
+                <p className="mt-2 text-lg font-medium">
+                  {category}
+                </p>
+
+              </div>
+
+              <button
+                onClick={() => setIsOpen(false)}
+                className="
+                  rounded-full
+                  border
+                  border-neutral-300
+                  px-6
+                  py-3
+                  font-medium
+                  transition-all
+                  duration-300
+                  hover:bg-black
+                  hover:text-white
+                "
+              >
+                Close
+              </button>
+
+            </div>
+
           </div>
+
         </div>
       )}
     </>

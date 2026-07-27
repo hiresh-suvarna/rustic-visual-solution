@@ -1,18 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useLocation,
+} from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const isHome = location.pathname === "/";
+  const useWhiteHeader = !isHome || isScrolled;
+
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 30);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+  }, [isMenuOpen]);
 
   const links = [
     { to: "/", label: "Home" },
@@ -24,147 +40,175 @@ export default function Header() {
 
   return (
     <>
-      {/* HEADER */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-white/70 backdrop-blur-xl shadow-md"
-            : "bg-black/30 backdrop-blur-lg text-gold"
+          useWhiteHeader
+            ? "bg-white/85 backdrop-blur-xl shadow-md"
+            : "bg-black/30 backdrop-blur-xl"
         }`}
       >
-        <div className="container mx-auto px-6 lg:px-16 lg:py-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
 
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between h-16 xl:h-20">
 
-            {/* LOGO */}
-            <Link to="/" className="flex items-center gap-3">
+            {/* Logo */}
+
+            <Link to="/" className="flex items-center gap-3 shrink-0">
+
               <img
                 src="/images/logoNew.PNG"
                 alt="Logo"
-                className="h-8 lg:h-10"
+                className="h-8 xl:h-10"
               />
-              <p className="text-lg lg:text-2xl font-medium tracking-tight">
-                Rustic Visual Solution
+
+              <p
+                className={`hidden sm:block text-lg xl:text-xl font-semibold leading-tight transition-colors ${
+                  useWhiteHeader ? "text-black" : "text-[#D4A04C]"
+                }`}
+              >
+                Rustic Visual
+                <br />
+                Solution
               </p>
+
             </Link>
 
-            {/* DESKTOP NAV */}
-            <nav className="hidden lg:flex items-center gap-12">
+            {/* Desktop Navigation */}
+
+            <nav className="hidden xl:flex items-center gap-8 2xl:gap-10">
+
               {links.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`text-md font-medium transition font-inter ${
-                    isScrolled
-                      ? "text-black hover:text-gold"
-                      : "text-warmWhite hover:text-white"
+                  activeProps={{
+                    className: "text-[#D4A04C]",
+                  }}
+                  className={`font-medium transition-colors ${
+                    useWhiteHeader
+                      ? "text-black hover:text-[#D4A04C]"
+                      : "text-white hover:text-[#D4A04C]"
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
+
             </nav>
 
-            {/* CTA */}
-            <div className="hidden lg:block">
+            {/* Desktop CTA */}
+
+            <div className="hidden xl:block">
+
               <button
                 onClick={() => navigate({ to: "/contact" })}
-                className="bg-gold font-inter
-                px-8 py-3 rounded-full text-md font-semibold
+                className="
+                px-6 xl:px-7
+                py-2.5 xl:py-3
+                rounded-full
+                bg-[#D4A04C]
                 text-black
-                hover:bg-black hover:text-white
-                transition-all duration-400
+                font-semibold
+                hover:bg-black
+                hover:text-white
+                transition-all
+                duration-300
                 "
               >
                 Get a Quote
               </button>
+
             </div>
 
-            {/* MOBILE BUTTON */}
+            {/* Mobile Menu Button */}
+
             <button
-              className="lg:hidden"
+              className={`xl:hidden transition ${
+                useWhiteHeader ? "text-black" : "text-white"
+              }`}
               onClick={() => setIsMenuOpen(true)}
             >
-              <Menu size={26} />
+              <Menu size={28} />
             </button>
 
           </div>
+
         </div>
       </header>
 
-      {/* MOBILE SIDEBAR */}
+      {/* Mobile Menu */}
+
       <div
-        className={`
-        fixed inset-0 z-50 transition-all duration-300
-        ${isMenuOpen ? "visible opacity-100" : "invisible opacity-0"}
-        `}
+        className={`fixed inset-0 z-[60] transition-all duration-300 ${
+          isMenuOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible"
+        }`}
       >
 
-        {/* BACKDROP */}
+        {/* Backdrop */}
+
         <div
-          className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
           onClick={() => setIsMenuOpen(false)}
         />
 
-        {/* SIDEBAR PANEL */}
+        {/* Sidebar */}
+
         <div
-          className={`
-          absolute right-0 top-0 h-full w-[80%] max-w-sm
-          bg-white/90 backdrop-blur-xl
-          shadow-2xl
-          p-6
-          transform transition-transform duration-300
-          ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
-          `}
+          className={`absolute right-0 top-0 h-full w-[82%] max-w-sm bg-white shadow-2xl transition-transform duration-300 ${
+            isMenuOpen
+              ? "translate-x-0"
+              : "translate-x-full"
+          }`}
         >
 
-          {/* HEADER */}
-          <div className="flex items-center justify-between mb-10">
-            <span className="text-lg font-semibold">Menu</span>
-            <button onClick={() => setIsMenuOpen(false)}>
-              <X size={26} />
-            </button>
-          </div>
+          <div className="p-6">
 
-          {/* LINKS */}
-          <nav className="flex flex-col gap-6">
+            <div className="flex items-center justify-between mb-10">
 
-            {links.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setIsMenuOpen(false)}
-                className="
-                text-lg font-medium
-                text-black/80 hover:text-black
-                transition
-                "
-              >
-                {link.label}
-              </Link>
-            ))}
+              <span className="text-xl font-semibold">
+                Menu
+              </span>
 
-          </nav>
+              <button onClick={() => setIsMenuOpen(false)}>
+                <X size={28} />
+              </button>
 
-          {/* CTA */}
-          <div className="mt-10">
+            </div>
+
+            <nav className="flex flex-col gap-7">
+
+              {links.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setIsMenuOpen(false)}
+                  activeProps={{
+                    className: "text-[#D4A04C]",
+                  }}
+                  className="text-lg font-medium text-black hover:text-[#D4A04C] transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+
+            </nav>
+
             <button
               onClick={() => {
                 navigate({ to: "/contact" });
                 setIsMenuOpen(false);
               }}
-              className="
-              w-full py-3 rounded-full
-              bg-black text-white
-              hover:bg-neutral-800
-              transition
-              "
+              className="w-full mt-12 rounded-full bg-black text-white py-3 hover:bg-[#D4A04C] hover:text-black transition"
             >
               Get a Quote
             </button>
+
           </div>
 
         </div>
+
       </div>
     </>
   );

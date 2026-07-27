@@ -46,27 +46,146 @@ export default function Packages() {
   ];
 
   return (
-    <div className="pt-32 lg:pt-40 pb-20 lg:pb-32 px-6 lg:px-12">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16 lg:mb-20">
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6">Packages</h1>
-          <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Choose the perfect package for your premium visual experience. All packages include professional equipment and expert execution.
-          </p>
+  <div className="pt-32 lg:pt-40">
+
+    {/* ================= HERO ================= */}
+
+    <section className="px-6 lg:px-12">
+
+      <div className="container mx-auto max-w-6xl text-center">
+
+        <div className="flex items-center justify-center gap-4 mb-6">
+
+          <div className="w-14 h-px bg-gold/40" />
+
+          <span className="uppercase tracking-[0.35em] text-sm font-semibold text-gold">
+            PRICING
+          </span>
+
+          <div className="w-14 h-px bg-gold/40" />
+
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
-          {packages.map((pkg, index) => (
-            <PricingCard key={index} {...pkg} />
-          ))}
-        </div>
+        <h1 className="font-bricolage text-5xl md:text-6xl lg:text-7xl font-semibold leading-[0.95]">
 
-        <div className="mt-16 lg:mt-20 text-center">
-          <p className="text-muted-foreground">
-            Need a custom package? <a href="/contact" className="text-foreground font-medium hover:underline">Contact us</a> for a tailored solution.
-          </p>
-        </div>
+          Packages Built
+          <br />
+          Around Your Vision
+
+        </h1>
+
+        <p className="mt-8 max-w-3xl mx-auto text-lg lg:text-xl leading-9 text-muted-foreground">
+
+          Whether you're showcasing a luxury residence,
+          hospitality venue, commercial development or
+          cultural landmark, we have a package designed to
+          deliver immersive visual experiences.
+
+        </p>
+
       </div>
-    </div>
-  );
+
+    </section>
+
+    {/* ================= PACKAGES ================= */}
+
+    <section className="mt-24 bg-[#faf8f4] py-20 lg:py-28">
+
+      <div className="container mx-auto max-w-7xl px-6 lg:px-0">
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+          {packages.map((pkg, index) => (
+
+            <PricingCard
+              key={index}
+              {...pkg}
+            />
+
+          ))}
+
+        </div>
+
+      </div>
+
+    </section>
+
+    {/* ================= CTA ================= */}
+
+    <section className="py-24 lg:py-32 px-6">
+
+      <div className="max-w-5xl mx-auto rounded-[36px] bg-gradient-to-br from-neutral-900 to-black text-white overflow-hidden relative">
+
+        {/* Decorative Glow */}
+
+        <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
+
+        <div className="relative z-10 px-8 py-16 lg:px-20 lg:py-24 text-center">
+
+          <div className="flex items-center justify-center gap-4 mb-6">
+
+            <div className="w-14 h-px bg-gold/40" />
+
+            <span className="uppercase tracking-[0.35em] text-sm font-semibold text-gold">
+              CUSTOM SOLUTIONS
+            </span>
+
+            <div className="w-14 h-px bg-gold/40" />
+
+          </div>
+
+          <h2 className="font-bricolage text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight">
+
+            Need Something
+            <br />
+            Tailored?
+
+          </h2>
+
+          <p className="mt-8 max-w-2xl mx-auto text-lg leading-8 text-white/80">
+
+            Every project is unique. If your requirements don't
+            fit into one of our standard packages, we'll prepare
+            a custom proposal designed specifically for your
+            property and business goals.
+
+          </p>
+
+          <div className="mt-12">
+
+            <a
+              href="/contact"
+              className="
+                inline-flex
+                items-center
+                gap-3
+                rounded-full
+                bg-gold
+                px-8
+                py-4
+                font-medium
+                text-white
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-2xl
+              "
+            >
+              Request a Custom Quote
+
+              <span className="text-lg">→</span>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+);
 }
